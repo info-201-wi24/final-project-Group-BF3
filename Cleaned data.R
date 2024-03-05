@@ -7,11 +7,16 @@ colnames(gdp_data)
 colnames(covid_data)
 
 
-# Perform the join operation
-joined_data <- covid_data %>%
-  inner_join(gdp_data, by = "iso_code")
+gdp_data<-gdp_data[gdp_data$year>=2020 & gdp_data$year<=2021, ]
 
-gdp_data <- rename(gdp_data, iso_code = `Country.Code`)
+covid_data<-covid_data %>% 
+  select(iso_code, continent, location, date, total_vaccinations)
+
+# Perform the join operation
+gdp_data <- rename(gdp_data, "iso_code" = "Country.Code")
+joined_data <- covid_data %>%
+  inner_join(gdp_data, by = "iso_code", relationship="many-to-many")
+
 head(joined_data$continent)
 
 colnames(joined_data)
@@ -29,10 +34,10 @@ joined_data$gdp_category <- cut(joined_data$gdp_per_capita_USD,
 
 joined_data$new_cases_to_tests_ratio <- joined_data$new_cases / joined_data$total_tests
 
-# Summarizing average total cases and GDP per capita by continent
+# Summarizing average total vaccinations and GDP per capita by continent
 summary_df <- joined_data %>%
   group_by(continent) %>%
-  summarise(average_total_cases = mean(total_cases, na.rm = TRUE),
+  summarise(average_total_vaccinations = mean(total_vaccinations, na.rm = TRUE),
             average_gdp_per_capita = mean(GDP_per_capita_USD, na.rm = TRUE))
 
 print(summary_df)
