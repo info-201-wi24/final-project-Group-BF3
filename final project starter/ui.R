@@ -3,8 +3,10 @@
 ## OVERVIEW TAB INFO
 
 overview_tab <- tabPanel("Overview Tab Title",
-   h1("Some title"),
-   p("some explanation")
+   h1("Country Covid Vaccination Numbers vs GDP"),
+   p("Our project aims to explain the relationship 
+     between country GDP throughout the pandemic and 
+     COVID vaccination totals and rates")
 )
 
 ## VIZ 1 TAB INFO
@@ -73,7 +75,7 @@ conclusion_tab <- tabPanel("Conclusion Tab Title",
 
 
 
-ui <- navbarPage("Example Project Title",
+ui <- navbarPage("Group BF-3: Country Covid Vaccination Numbers vs GDP",
   overview_tab,
   viz_1_tab,
   viz_2_tab,
