@@ -1,12 +1,19 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 426513f (Update ui.R)
 
 ## OVERVIEW TAB INFO
-
 library(shiny)
+<<<<<<< HEAD
 library(plotly)
 library(dplyr)
 
 overview_tab <- tabPanel("Overview Tab Title",
     mainPanel(img(src='CovidVaccineImage.jpg', align='center'),
+=======
+overview_tab <- tabPanel("Overview Tab Title",
+>>>>>>> parent of 426513f (Update ui.R)
    h1("Country Covid Vaccination Numbers vs GDP"),
    p("Our project aims to explain the relationship 
      between country GDP throughout the pandemic and 
@@ -15,23 +22,21 @@ overview_tab <- tabPanel("Overview Tab Title",
 
 ## VIZ 1 TAB INFO
 
-# UI for the GDP and Vaccination Visualization
 viz_1_sidebar <- sidebarPanel(
-  h2("Visualization Options"),
-  selectInput("yearChoice", "Select Year:",
-              choices = unique(joined_data$year)) # Ensure 'joined_data$year' contains unique years
+  h2("Options for graph"),
+  #TODO: Put inputs for modifying graph here
 )
 
 viz_1_main_panel <- mainPanel(
-  h2("GDP and Vaccination Progress"),
-  plotlyOutput(outputId = "gdpVaccinationPlot")
+  h2("Vizualization 1 Title"),
+  # plotlyOutput(outputId = "your_viz_1_output_id")
 )
 
-viz_1_tab <- tabPanel("GDP vs. Vaccinations",
-                      sidebarLayout(
-                        viz_1_sidebar,
-                        viz_1_main_panel
-                      )
+viz_1_tab <- tabPanel("Viz 1 tab title",
+  sidebarLayout(
+    viz_1_sidebar,
+    viz_1_main_panel
+  )
 )
 
 ## VIZ 2 TAB INFO
