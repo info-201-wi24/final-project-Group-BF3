@@ -1,7 +1,12 @@
+##load data
+joined_data<-read.csv("https://github.com/info-201-wi24/final-project-Group-BF3/blob/cd46d18cfd36a4d705831d2a8344f272c08608ec/Cleaned%20data.R")
 
 
 ## OVERVIEW TAB INFO
+
 library(shiny)
+library(plotly)
+library(dplyr)
 overview_tab <- tabPanel("Overview Tab Title",
    h1("Country Covid Vaccination Numbers vs GDP"),
    p("Our project aims to explain the relationship 
