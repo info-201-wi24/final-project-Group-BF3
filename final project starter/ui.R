@@ -1,13 +1,20 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 426513f (Update ui.R)
 
 ## OVERVIEW TAB INFO
-
 library(shiny)
+<<<<<<< HEAD
 library(plotly)
 library(dplyr)
 
 overview_tab <- 
   tabPanel("Overview Tab Title",
     mainPanel(img(src='CovidVaccineImage.jpg', align='center'),
+=======
+overview_tab <- tabPanel("Overview Tab Title",
+>>>>>>> parent of 426513f (Update ui.R)
    h1("Country Covid Vaccination Numbers vs GDP"),
    p("Our project aims to explain the relationship 
      between country GDP throughout the pandemic and 
