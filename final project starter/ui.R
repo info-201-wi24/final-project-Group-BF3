@@ -42,7 +42,10 @@ overview_tab <-
      of each and how they affect each other, if in any way."),
   p("We would likefor our project to show interactive data and progression of Covid 19 Vaccinations per country and year.
      Aditionally, we hope to be able to show the timeline and speed of worldwide vaccinations in order 
-     to understand health authorities' the response to the pandemic ")
+     to understand health authorities' the response to the pandemic"),
+  p("Our data comes from:"),
+  url<-a("World GDP", href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD", align="center"), 
+  url<-a("Vaccination Data", href="https://ourworldindata.org/covid-vaccinations", align = "center")
 )
 
 ## VIZ 1 TAB INFO
