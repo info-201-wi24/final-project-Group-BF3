@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 library(ggplot2)
 library(plotly)
 library(dplyr)
@@ -20,7 +20,6 @@ server <- function(input, output) {
              hovermode = "closest")
   })
 }
-=======
 server <- function(input, output) {
   output$gdpVaccinationPlot <- renderPlotly({
     # Filter data based on selected year
@@ -38,5 +37,3 @@ server <- function(input, output) {
              hovermode = "closest")
   })
 }
-
->>>>>>> 4a3d111268cdf22521248c45778fc65ba57e0847
