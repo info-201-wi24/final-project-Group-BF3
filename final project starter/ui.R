@@ -75,7 +75,7 @@ plotlyOutput("continentPlot"))
 
 conclusion_tab <- tabPanel("Conclusion Tab Title",
  h1("Some title"),
- p("some conclusions")
+ p("Viz_1 conclusion: From the graph we draw, We can't see a obvius relationship between conutry GDP and vaccination progress, but we did see they were making progressing yearly, and Countries that have comparatively high GDP per capita indeed has more advanced  vaccination progression.")
 )
 
 
