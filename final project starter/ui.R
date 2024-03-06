@@ -7,12 +7,15 @@ joined_data_df<-read.csv("https://github.com/info-201-wi24/final-project-Group-B
 library(shiny)
 library(plotly)
 library(dplyr)
-overview_tab <- tabPanel("Overview Tab Title",
+
+overview_tab <- 
+  tabPanel("Overview Tab Title",
+    mainPanel(img(src='CovidVaccineImage.jpg', align='center'),
    h1("Country Covid Vaccination Numbers vs GDP"),
    p("Our project aims to explain the relationship 
      between country GDP throughout the pandemic and 
      COVID vaccination totals and rates")
-)
+))
 
 ## VIZ 1 TAB INFO
 
