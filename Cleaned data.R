@@ -7,9 +7,9 @@ colnames(gdp_data)
 colnames(covid_data)
 
 
-gdp_data<-gdp_data[gdp_data$year>=2018 & gdp_data$year<=2021, ]
+gdp_data<-gdp_data[gdp_data$year>=2020 & gdp_data$year<=2021, ]
 
-covid_data<-covid_data %>% 
+covid_data<-covid_data %>%
   select(iso_code, continent, location, date, total_vaccinations)
 
 # Perform the join operation
