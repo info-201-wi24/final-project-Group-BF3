@@ -9,7 +9,7 @@ covid_data <- read.csv('owid-covid-data.csv')
 
 # Select relevant columns
 covid_data <- covid_data %>%
-  select(iso_code, continent, location, date, total_vaccinations)
+  select(iso_code, continent, location, date, total_vaccinations, people_vaccinated_per_hundred)
 
 # Filter GDP data for years 2020 and 2021
 gdp_data <- gdp_data[gdp_data$year >= 2020 & gdp_data$year <= 2021, ]

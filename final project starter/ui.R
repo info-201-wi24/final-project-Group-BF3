@@ -10,7 +10,13 @@ overview_tab <-
    h1("Country Covid Vaccination Numbers vs GDP"),
    p("Our project aims to explain the relationship 
      between country GDP throughout the pandemic and 
-     COVID vaccination totals and rates")
+     COVID vaccination totals and rates. The reason for our 
+     focus on this is to help people understand the relationship
+     between these two and make inferences about the causation 
+     of each and how they affect each other, if in any way."),
+  p("We would likefor our project to show interactive data and progression of Covid 19 Vaccinations per country and year.
+     Aditionally, we hope to be able to show the timeline and speed of worldwide vaccinations in order 
+     to understand health authorities' the response to the pandemic ")
 )
 
 ## VIZ 1 TAB INFO
@@ -54,23 +60,16 @@ viz_2_tab <- tabPanel("Country vs. Vaccination total",
 )
 
 ## VIZ 3 TAB INFO
+viz_3_sidebar<- mainPanel(
+  h3("GDP Growth Rate and Vaccine Rollout Speed by Continent"))
 
-viz_3_sidebar <- sidebarPanel(
-  h2("Options for graph"),
-  #TODO: Put inputs for modifying graph here
+viz_3_main_panel<-sidebarLayout(sidebarPanel( h3("Visualization Options")), 
+                                selectInput("dataChoice", "Choose Data to Display:",
+                                choices = c(("GDP Growth Rate" = average_gdp_growth_rate),
+                                ("Vaccination Rates" = people_vaccinated_per_hundred)))
 )
-
-viz_3_main_panel <- mainPanel(
-  h2("Vizualization 3 Title"),
-  # plotlyOutput(outputId = "your_viz_1_output_id")
-)
-
-viz_3_tab <- tabPanel("Viz 3 tab title",
-  sidebarLayout(
-    viz_3_sidebar,
-    viz_3_main_panel
-  )
-)
+mainPanel(h3("Interactive Data Visualization"),
+plotlyOutput("continentPlot"))
 
 ## CONCLUSIONS TAB INFO
 
