@@ -11,21 +11,23 @@ overview_tab <- tabPanel("Overview Tab Title",
 
 ## VIZ 1 TAB INFO
 
+# UI for the GDP and Vaccination Visualization
 viz_1_sidebar <- sidebarPanel(
-  h2("Options for graph"),
-  #TODO: Put inputs for modifying graph here
+  h2("Visualization Options"),
+  selectInput("yearChoice", "Select Year:",
+              choices = unique(joined_data$year)) # Ensure 'joined_data$year' contains unique years
 )
 
 viz_1_main_panel <- mainPanel(
-  h2("Vizualization 1 Title"),
-  # plotlyOutput(outputId = "your_viz_1_output_id")
+  h2("GDP and Vaccination Progress"),
+  plotlyOutput(outputId = "gdpVaccinationPlot")
 )
 
-viz_1_tab <- tabPanel("Viz 1 tab title",
-  sidebarLayout(
-    viz_1_sidebar,
-    viz_1_main_panel
-  )
+viz_1_tab <- tabPanel("GDP vs. Vaccinations",
+                      sidebarLayout(
+                        viz_1_sidebar,
+                        viz_1_main_panel
+                      )
 )
 
 ## VIZ 2 TAB INFO
