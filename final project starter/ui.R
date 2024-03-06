@@ -5,8 +5,7 @@ library(shiny)
 library(plotly)
 library(dplyr)
 
-overview_tab <- 
-  tabPanel("Overview Tab Title",
+overview_tab <- tabPanel("Overview Tab Title",
     mainPanel(img(src='CovidVaccineImage.jpg', align='center'),
    h1("Country Covid Vaccination Numbers vs GDP"),
    p("Our project aims to explain the relationship 
