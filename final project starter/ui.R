@@ -1,6 +1,3 @@
-##load data
-joined_data_df<-read.csv("https://github.com/info-201-wi24/final-project-Group-BF3/blob/cd46d18cfd36a4d705831d2a8344f272c08608ec/Cleaned%20data.R")
-
 
 ## OVERVIEW TAB INFO
 
@@ -23,7 +20,7 @@ overview_tab <-
 viz_1_sidebar <- sidebarPanel(
   h2("Visualization Options"),
   selectInput("yearChoice", "Select Year:",
-              choices = unique(joined_data_df$year)) # Ensure 'joined_data$year' contains unique years
+              choices = unique(joined_data$year)) # Ensure 'joined_data$year' contains unique years
 )
 
 viz_1_main_panel <- mainPanel(
