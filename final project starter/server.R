@@ -1,4 +1,3 @@
-
 library(ggplot2)
 library(plotly)
 library(dplyr)
@@ -20,23 +19,21 @@ server <- function(input, output) {
              hovermode = "closest")
   })
   
-
+  
   output$VaccinesByCountry <- renderPlotly({
-    # Filter data based on country
-    filtered_data <- joined_data %>% 
-      group_by(location) %>% 
-      filter(Country.Name == input$Country.NameChoice, na.rm=TRUE) %>%
-      mutate(TotalVaccinations =total_vaccinations)
-    
-    print(filtered_data)
+    # Filter data based on country and year
+    filtered_data <- joined_data %>%
+      filter(Country.Name == input$Country.NameChoice) %>%
+      group_by(Country.Name, year) %>%
+      mutate(TotalVaccinations = total_vaccinations)
     
     plot_ly(filtered_data, x = ~year, y = ~TotalVaccinations,
-            type = 'bar', mode = 'markers',
-            color = ~Country.Name, text = ~paste("Location:", location, "<br>Total Vaccinations:", total_vaccinations),
-            marker = list(size = 100)) %>%
-      layout(title = paste("Country vs. Total Vaccinations (Log Scale) in", input$Country.NameChoice),
-             xaxis = list(title = "Country"),
-             yaxis = list(title = "Total Vaccinations (Log Scale)", type = "log"),
+            type = 'bar',
+            color = 'blue',
+            marker = list(size = 50)) %>%
+      layout(title = paste("Total Vaccinations by Year in", input$CountryChoice),
+             xaxis = list(title = "Year"),
+             yaxis = list(title = "Total Vaccinations", showticklabels = FALSE),
              hovermode = "closest")
   })
 }  
