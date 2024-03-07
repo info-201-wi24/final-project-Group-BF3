@@ -89,17 +89,29 @@ viz_2_tab <- tabPanel("Country vs. Vaccination total",
 )
 
 ## VIZ 3 TAB INFO
-viz_3_sidebar<- mainPanel(
-  h3("GDP Growth Rate and Vaccine Rollout Speed by Continent"))
 
-viz_3_main_panel<-sidebarLayout(sidebarPanel( h3("Visualization Options")), 
-                                selectInput("dataChoice", "Choose Data to Display:",
-                                choices = c(("GDP Growth Rate" = average_gdp_growth_rate),
-                                ("Vaccination Rates" = people_vaccinated_per_hundred)))
+viz_3_sidebar <- sidebarPanel(
+  h2("Visualization Options"),
+  selectInput(
+    input = "dataChoice",
+    label = "Choose year to Display:", 
+    choices = c("2020", "2021", "2022", "2024")
+  )
+  
 )
-mainPanel(h3("Interactive Data Visualization"),
-plotlyOutput("continentPlot"))
 
+
+viz_3_main_panel <- mainPanel(
+  h2("GDP Growth Rate vs. Vaccine Rollout Speed"),
+  plotlyOutput("Plot3")
+)
+
+viz_3_tab <- tabPanel("GDP Growth Rate and Vaccine Rollout Speed by Continent",
+                      sidebarLayout(
+                        viz_3_sidebar,
+                        viz_3_main_panel
+                      )
+)
 ## CONCLUSIONS TAB INFO
 
 conclusion_tab <- tabPanel("Conclusion Tab Title",
