@@ -13,7 +13,7 @@ overview_tab <-
      Aditionally, we hope to be able to show the timeline and speed of worldwide vaccinations in order 
      to understand health authorities' the response to the pandemic"),
   p("Our data comes from:"),
-  url<-a("World GDP", href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD", align="center"), 
+  url<-a("World GDP", href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD", align="center"), "and",
   url<-a("Vaccination Data", href="https://ourworldindata.org/covid-vaccinations", align = "center")
 )
 
