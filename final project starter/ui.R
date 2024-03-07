@@ -76,11 +76,11 @@ viz_3_sidebar <- sidebarPanel(
     ))
 
 viz_3_main_panel <- mainPanel(
-  h2("Does higher continent"),
+  h2("Does higher continent GDP mean higher total vaccination totals?"),
   plotlyOutput("continentGDPVaccinationPlot")
 )
 
-viz_3_tab <- tabPanel("GDP Growth Rate and Vaccine Rollout Speed by Continent",
+viz_3_tab <- tabPanel("GDP and Vacinations by Continent",
                       sidebarLayout(
                         viz_3_sidebar,
                         viz_3_main_panel
