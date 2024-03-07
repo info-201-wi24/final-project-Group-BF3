@@ -1,4 +1,6 @@
-
+library(ggplot2)
+library(plotly)
+library(dplyr)
 overview_tab <-
   tabPanel("Overview Tab Title",
   mainPanel(img(src="CovidImage.png", height="50%", width="50%", align="center")),
@@ -90,11 +92,26 @@ viz_3_tab <- tabPanel("GDP and Vacinations by Continent",
 
 conclusion_tab <- tabPanel("Conclusion Tab",
  h1("Conclusion"),
- p("From the graph we draw, We can't see a obvius relationship 
+ p("From the graph we draw, We can't see a obvious relationship 
    between conutry GDP and vaccination progress, but we did see
    they were making progressing yearly, and Countries that have 
    comparatively high GDP per capita indeed has more advanced 
-   vaccination progression.")
+   vaccination progression."),
+ p("Aditionally, though we had a lot of
+   not readily available data, we were able to show different 
+   aspects of the relationship between GDP and Covid vaccination 
+   rates in the last 4 years. We aimed to leave these visuals of 
+   the data for viewers to make their own inferences and draw their 
+   own conclusions. However, we do agree that GDP data and vaccination 
+   data might have not been the best choice to combine, however we did 
+   want to test out the relationship starting with year 2020 since that
+   was a bad time for gross domestic product as the pandemic made the 
+   rate of GDP decrease. With this data essentially we wanted to answer
+   the question of, 'Did vaccinations help bring GDP back up?'. However 
+   after looking at the data we found no correlation and pivoting to find
+   data that would show a strong relationship would take a long time. 
+   We do believe in the future with more data of the years after the 
+   pandemic, there will be studies or research that looks into this.")
 )
 
 
