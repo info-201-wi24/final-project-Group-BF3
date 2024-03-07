@@ -88,9 +88,13 @@ viz_3_tab <- tabPanel("GDP and Vacinations by Continent",
 )
 ## CONCLUSIONS TAB INFO
 
-conclusion_tab <- tabPanel("Conclusion Tab Title",
+conclusion_tab <- tabPanel("Conclusion Tab",
  h1("Conclusion"),
- p("From the graph we draw, We can't see a obvius relationship between conutry GDP and vaccination progress, but we did see they were making progressing yearly, and Countries that have comparatively high GDP per capita indeed has more advanced  vaccination progression.")
+ p("From the graph we draw, We can't see a obvius relationship 
+   between conutry GDP and vaccination progress, but we did see
+   they were making progressing yearly, and Countries that have 
+   comparatively high GDP per capita indeed has more advanced 
+   vaccination progression.")
 )
 
 
