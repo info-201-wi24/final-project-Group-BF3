@@ -1,3 +1,4 @@
+
 library(ggplot2)
 library(plotly)
 library(dplyr)
@@ -11,7 +12,7 @@ server <- function(input, output) {
     
     plot_ly(filtered_data, x = ~GDP_per_capita_USD, y = ~TotalVaccinationsLog,
             type = 'scatter', mode = 'markers',
-            color = ~continent, text = ~paste("Location:", location, "<br>Total Vaccinations:", total_vaccinations, "<br>GDP per Capita (USD):", GDP_per_capita_USD),
+            color = ~Country.Name, text = ~paste("Location:", location, "<br>Total Vaccinations:", total_vaccinations, "<br>GDP per Capita (USD):", GDP_per_capita_USD),
             marker = list(size = 10)) %>%
       layout(title = paste("GDP per Capita vs. Total Vaccinations (Log Scale) in", input$yearChoice),
              xaxis = list(title = "GDP per Capita (USD)"),
@@ -36,36 +37,24 @@ server <- function(input, output) {
              yaxis = list(title = "Total Vaccinations", showticklabels = FALSE),
              hovermode = "closest")
   })
-
-
-
-
   
-joined_data <- joined_data
-server <- function(input, output){
-  
-  
-  output$Plot3 <- renderPlotly({
-    print(class(joined_data))
-    filteredData <- joined_data %>%
-      dplyr:: filter(year == as.numeric(input$dataChoice))
+  output$continentGDPVaccinationPlot <- renderPlotly({
+    # Filter data based on selected continent and year
+    filtered_data <- joined_data %>%
+      filter(continent == input$continentChoice, year == input$yearChoice) %>%
+      group_by(continent) %>%
+      mutate(TotalVaccinations = total_vaccinations)  # Add 1 to avoid log(0)
     
-    my_plot <- ggplotly(filteredData,
-                        x = GDP_USD,
-                        y = people_vaccinated_per_hundred,
-                        type = "scatter",
-                        mode = "markers",
-                        marker = list(size = 9,
-                                      color = GDP_USD,
-                                      colorscale = "red"),              
-
-  
-)
-
-  
+    plot_ly(filtered_data, x = ~GDP_per_capita_USD, y = ~TotalVaccinations,
+            type = 'bar',
+            color = ~continent, text = ~paste("Location:", continent, "<br>Total Vaccinations:", total_vaccinations, "<br>GDP per Capita (USD):", GDP_per_capita_USD),
+            marker = list(size = 150)) %>%
+      layout(title = paste("GDP per Capita vs. Total Vaccinations in", input$continentChoice, "for", input$yearChoice),
+             xaxis = list(title = "GDP per Capita (USD)"),
+             yaxis = list(title = "Total Vaccinations",
+                          hoverformat = ".2f", # Set hover format to display full numbers on hover
+                          showticklabels = FALSE), # Hide tick labels on y-axis
+             hovermode = "closest")
   })
   
-  
 }
-
-}  

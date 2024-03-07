@@ -1,34 +1,3 @@
-library(dplyr)
-library(lubridate)
-
-# Load GDP data
-gdp_data <- read.csv("world_country_gdp_usd.csv")
-
-# Load COVID-19 data
-covid_data <- read.csv('owid-covid-data.csv')
-
-# Select relevant columns
-covid_data <- covid_data %>%
-  select(iso_code, continent, location, date, total_vaccinations, people_vaccinated_per_hundred)
-
-# Filter GDP data for years 2020 and 2021
-gdp_data <- gdp_data[gdp_data$year >= 2020 & gdp_data$year <= 2021, ]
-
-# Rename columns for join operation
-gdp_data <- rename(gdp_data, "iso_code" = "Country.Code")
-
-# Perform inner join operation
-joined_data <- covid_data %>%
-  inner_join(gdp_data, by = "iso_code", relationship = "many-to-many")
-
-# Extract year from date column
-joined_data <- joined_data %>%
-  mutate(year = year(date))
-
-## OVERVIEW TAB INFO
-library(shiny)
-library(plotly)
-library(dplyr)
 
 overview_tab <-
   tabPanel("Overview Tab Title",
@@ -90,20 +59,25 @@ viz_2_tab <- tabPanel("Country vs. Vaccination total",
 
 ## VIZ 3 TAB INFO
 
+
+
 viz_3_sidebar <- sidebarPanel(
   h2("Visualization Options"),
   selectInput(
-    input = "dataChoice",
-    label = "Choose year to Display:", 
-    choices = c("2020", "2021", "2022", "2024")
-  )
-  
-)
-
+      input = "continentChoice",
+      label = "Choose continent to display:", 
+      choices =unique(joined_data$continent) 
+      ),
+    h2("Year"),
+    selectInput(
+      input = "yearChoice",
+      label = "Choose year to Display:", 
+      choices = unique(joined_data$year)
+    ))
 
 viz_3_main_panel <- mainPanel(
-  h2("GDP Growth Rate vs. Vaccine Rollout Speed"),
-  plotlyOutput("Plot3")
+  h2("Does higher continent"),
+  plotlyOutput("continentGDPVaccinationPlot")
 )
 
 viz_3_tab <- tabPanel("GDP Growth Rate and Vaccine Rollout Speed by Continent",

@@ -1,4 +1,5 @@
 library(dplyr)
+library(plotly)
 library(lubridate)
 
 # Load GDP data
@@ -10,6 +11,7 @@ covid_data <- read.csv('owid-covid-data.csv')
 # Select relevant columns
 covid_data <- covid_data %>%
   select(iso_code, continent, location, date, total_vaccinations, people_vaccinated_per_hundred)
+
 
 # Filter GDP data for years 2020 and 2021
 gdp_data <- gdp_data[gdp_data$year >= 2020 & gdp_data$year <= 2021, ]
@@ -24,3 +26,4 @@ joined_data <- covid_data %>%
 # Extract year from date column
 joined_data <- joined_data %>%
   mutate(year = year(date))
+
